@@ -16,7 +16,7 @@ async function handleMessage(payload: HMRPayload) {
       console.log(`[hmr] connected.`);
       break;
     case "update":
-      await import(`./${path}?t=${timestamp}`).then((mods) => {
+      await import(`../${path}?t=${timestamp}`).then((mods) => {
         console.log(mods);
       });
       console.log(`[hmr] ${path} updated.`);
