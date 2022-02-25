@@ -45,7 +45,7 @@ export async function initHMR(sock: WebSocket) {
 
 export function HMRMiddleware({ app, root }: AppContext) {
   app.use(async (ctx, next) => {
-    console.log(ctx.request.url);
+    // console.log(ctx.request.url);
 
     await next();
   });

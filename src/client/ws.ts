@@ -1,4 +1,5 @@
 import { HMRPayload } from "../server/hmr.ts";
+
 const wsp = location.protocol === "https:" ? "wss" : "ws";
 
 const ws = new WebSocket(`${wsp}://localhost:4000/sock`);

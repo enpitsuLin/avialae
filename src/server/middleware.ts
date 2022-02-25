@@ -9,10 +9,6 @@ export default function serverMiddleware({ app, root }: AppContext) {
       const filename = url.pathname.match(/\/@(.+)/)?.[1] as string;
       const origin = path.join(baseDir, filename);
       const filePath = getLocalFile(origin);
-      console.log(filePath);
-
-      ctx.response.type = "text/javascript";
-      ctx.response.body = "";
 
       try {
         const { files } = await transform(filePath);
