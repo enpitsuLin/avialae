@@ -2,6 +2,8 @@ import { path } from "./deps.ts";
 const { emit, cwd } = Deno;
 const root = cwd();
 
+export const baseDir = path.parse(new URL(import.meta.url).pathname.replace("/", "")).dir.replaceAll(/\//g, "\\");
+
 export function decoder(b: Uint8Array) {
   return new TextDecoder().decode(b);
 }

@@ -1,5 +1,5 @@
 import { path } from "../deps.ts";
-import { genCssCode, decoder, getLocalFile, transform } from "../utils.ts";
+import { genCssCode, decoder, getLocalFile, transform, baseDir } from "../utils.ts";
 import { AppContext } from "./createServer.ts";
 
 export default function serverMiddleware({ app, root }: AppContext) {
@@ -7,9 +7,9 @@ export default function serverMiddleware({ app, root }: AppContext) {
     const { url } = ctx.request;
     if (url.pathname.startsWith("/@")) {
       const filename = url.pathname.match(/\/@(.+)/)?.[1] as string;
-      const dir = path.parse(new URL(import.meta.url).pathname.replace("/", "")).dir;
-      const origin = path.join(dir, "../", filename);
+      const origin = path.join(baseDir, filename);
       const filePath = getLocalFile(origin);
+      console.log(filePath);
 
       ctx.response.type = "text/javascript";
       ctx.response.body = "";
