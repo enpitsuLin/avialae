@@ -19,7 +19,7 @@ export function getLocalFile(file: string) {
 
 export function genCssCode(id: string, css: string) {
   const code =
-    `import { updateStyle } from "/@module/client/client.ts";\n` +
+    `import { updateStyle } from "/@client/client.ts";\n` +
     `const css = ${JSON.stringify(css)}\n` +
     `updateStyle("${id}",css)`;
   return code;

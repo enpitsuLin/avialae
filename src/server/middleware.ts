@@ -5,8 +5,8 @@ import { AppContext } from "./createServer.ts";
 export default function serverMiddleware({ app, root }: AppContext) {
   app.use(async (ctx, next) => {
     const { url } = ctx.request;
-    if (url.pathname.startsWith("/@module/")) {
-      const filename = url.pathname.match(/\/@module\/(.+)/)?.[1] as string;
+    if (url.pathname.startsWith("/@")) {
+      const filename = url.pathname.match(/\/@(.+)/)?.[1] as string;
       const dir = path.parse(new URL(import.meta.url).pathname.replace("/", "")).dir;
       const origin = path.join(dir, "../", filename);
       const filePath = getLocalFile(origin);
