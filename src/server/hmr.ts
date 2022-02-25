@@ -2,7 +2,7 @@ import { mod } from "../deps.ts";
 import { AppContext } from "./createServer.ts";
 
 export interface HMRPayload {
-  type: "connected" | "update";
+  type: "connected" | "style-update" | "js-update";
   timestamp: number;
   path: string;
 }
@@ -31,7 +31,11 @@ export async function initHMR(sock: WebSocket) {
     if (!oldTime || oldTime + 1000 < timestamp) {
       let hmrPayload: HMRPayload | null = null;
 
-      if (kind === "modify") hmrPayload = { timestamp, path: name, type: "update" };
+      if (path.endsWith(".css")) {
+        if (kind === "modify") hmrPayload = { timestamp, path: name, type: "style-update" };
+      } else if (path.match(/.[t|j]sx?$/)) {
+        hmrPayload = { timestamp, path: name, type: "js-update" };
+      }
 
       if (hmrPayload !== null && sock.readyState === WebSocket.OPEN) {
         sock.send(JSON.stringify(hmrPayload));

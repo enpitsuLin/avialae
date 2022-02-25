@@ -15,7 +15,7 @@ async function handleMessage(payload: HMRPayload) {
     case "connected":
       console.log(`[hmr] connected.`);
       break;
-    case "update":
+    case "style-update":
       await import(`../${path}?t=${timestamp}`).then((mods) => {
         console.log(mods);
       });
