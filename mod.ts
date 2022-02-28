@@ -1,6 +1,5 @@
-import { serve } from "./src/server/index.ts";
-const { args } = Deno;
+import createCLI from "./src/cli/index.ts";
 
 if (import.meta.main) {
-  await serve({ port: 4000 });
+  createCLI(Deno.args);
 }
