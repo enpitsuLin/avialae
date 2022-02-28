@@ -21,6 +21,8 @@ async function handleMessage(payload: HMRPayload) {
       });
       console.log(`[hmr] ${path} updated.`);
       break;
+    case "js-update":
+      break;
     default:
       break;
   }
