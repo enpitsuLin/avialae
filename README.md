@@ -1,4 +1,4 @@
-# Avialae 
+# Avialae
 
 inspired by [@vue/dev-server](https://github.com/vuejs/vue-dev-server), build with deno but only for React
 
@@ -13,14 +13,17 @@ deno install -A --unstable -n avia 'https://deno.land/x/react_dev_server/mod.ts'
 in your project folder
 
 ```shell
-avia
+avia dev // or avia serve
 ```
 
 ## TODO
 
 - [ ] Hot reload
-- [x] cli 
+  - [x] css hot reload
+  - [ ] js hot reload
+- [x] cli
 - [ ] more general
 
-# License 
-MIT ©enpituslin 
+# License
+
+MIT ©enpituslin
